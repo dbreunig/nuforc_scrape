@@ -49,10 +49,11 @@ DB.create_table?(:geocodes) do
   String :county
 end
 
-# Uncomment if first run.
-# DB.alter_table(:sighting_events) do
-#   add_foreign_key :geocode_id, :geocodes
-# end
+unless DB[:sighting_events].columns.index(:geocode_id)
+  DB.alter_table(:sighting_events) do
+    add_foreign_key :geocode_id, :geocodes
+  end
+end
 
 class Geocode < Sequel::Model 
   one_to_many :sighting_events

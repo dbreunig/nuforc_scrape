@@ -3,3 +3,6 @@
 data/
 notebooks/
 .ipynb_checkpoints/
+notes.txt
+*.csv
+*_corp.txt

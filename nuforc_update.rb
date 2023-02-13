@@ -1,6 +1,5 @@
 require 'nokogiri'
 require 'open-uri'
-require 'sequel'
 require_relative 'db'
 require 'geocoder'
 

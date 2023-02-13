@@ -1,7 +1,8 @@
 #
 # Database
 # 
-
+require 'sequel'
+require 'h3'
 DB = Sequel.sqlite('nuforc.db')
 
 # Each represents an individual link on the `toc_url`
@@ -57,6 +58,10 @@ end
 
 class Geocode < Sequel::Model 
   one_to_many :sighting_events
+
+  def to_h3(resolution)
+    H3.from_geo_coordinates([lat, lon], resolution).to_s(16)
+  end
 end
 Geocode.unrestrict_primary_key
 
